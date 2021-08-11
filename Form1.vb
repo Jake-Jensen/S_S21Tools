@@ -23,7 +23,7 @@ Public Class Form1
             End If
             Try
                 Dim req As WebRequest = WebRequest.Create(URL)
-                req.Timeout = 100
+                req.Timeout = 300
                 req.Headers.Add(HttpRequestHeader.UserAgent, "Sapphire S21 Toolbox")
                 Dim res As WebResponse = req.GetResponse()
             Catch ex As Exception
@@ -83,5 +83,31 @@ Public Class Form1
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         AboutForm.Show()
+    End Sub
+
+    Private Sub DonateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DonateToolStripMenuItem.Click
+        Try
+            Dim URL As String = "https://paypal.me/SapphireExOne?locale.x=en_US"
+            Process.Start(URL)
+        Catch ex As Exception
+            MessageBox.Show(
+                "Click the help button below to donate.",
+                "Sapphire's S21 Toolbox Donation",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                0, '0 is default otherwise use MessageBoxOptions Enum
+                "https://paypal.me/SapphireExOne?locale.x=en_US",
+                "S21Toolbox")
+        End Try
+
+    End Sub
+
+    Private Sub CheckServerStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckServerStatusToolStripMenuItem.Click
+        If (GetServerStatus("https://splitsecond.site")) Then
+            MsgBox("Server is online.")
+        Else
+            MsgBox("Server is offline.")
+        End If
     End Sub
 End Class

@@ -38,6 +38,12 @@ Partial Class Form1
         Me.CheckForUpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateAllBinariesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateSoftwareListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.USBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WirelessToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PairToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton4 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.ReservedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -75,7 +81,7 @@ Partial Class Form1
         'ToolStrip1
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.White
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton3, Me.ToolStripDropDownButton4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(842, 25)
@@ -128,26 +134,72 @@ Partial Class Form1
         'CheckServerStatusToolStripMenuItem
         '
         Me.CheckServerStatusToolStripMenuItem.Name = "CheckServerStatusToolStripMenuItem"
-        Me.CheckServerStatusToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.CheckServerStatusToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CheckServerStatusToolStripMenuItem.Text = "Check server status"
         '
         'CheckForUpdateToolStripMenuItem
         '
         Me.CheckForUpdateToolStripMenuItem.Name = "CheckForUpdateToolStripMenuItem"
-        Me.CheckForUpdateToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.CheckForUpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CheckForUpdateToolStripMenuItem.Text = "Check for update"
         '
         'UpdateAllBinariesToolStripMenuItem
         '
         Me.UpdateAllBinariesToolStripMenuItem.Name = "UpdateAllBinariesToolStripMenuItem"
-        Me.UpdateAllBinariesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.UpdateAllBinariesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateAllBinariesToolStripMenuItem.Text = "Update all binaries"
         '
         'UpdateSoftwareListToolStripMenuItem
         '
         Me.UpdateSoftwareListToolStripMenuItem.Name = "UpdateSoftwareListToolStripMenuItem"
-        Me.UpdateSoftwareListToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.UpdateSoftwareListToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateSoftwareListToolStripMenuItem.Text = "Update software list"
+        '
+        'ToolStripDropDownButton3
+        '
+        Me.ToolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripDropDownButton3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.USBToolStripMenuItem, Me.WirelessToolStripMenuItem, Me.PairToolStripMenuItem})
+        Me.ToolStripDropDownButton3.ForeColor = System.Drawing.Color.Black
+        Me.ToolStripDropDownButton3.Image = CType(resources.GetObject("ToolStripDropDownButton3.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton3.Name = "ToolStripDropDownButton3"
+        Me.ToolStripDropDownButton3.Size = New System.Drawing.Size(43, 22)
+        Me.ToolStripDropDownButton3.Text = "ADB"
+        '
+        'USBToolStripMenuItem
+        '
+        Me.USBToolStripMenuItem.Name = "USBToolStripMenuItem"
+        Me.USBToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.USBToolStripMenuItem.Text = "USB"
+        '
+        'WirelessToolStripMenuItem
+        '
+        Me.WirelessToolStripMenuItem.Name = "WirelessToolStripMenuItem"
+        Me.WirelessToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.WirelessToolStripMenuItem.Text = "Wireless"
+        '
+        'PairToolStripMenuItem
+        '
+        Me.PairToolStripMenuItem.Name = "PairToolStripMenuItem"
+        Me.PairToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PairToolStripMenuItem.Text = "Pair"
+        '
+        'ToolStripDropDownButton4
+        '
+        Me.ToolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ToolStripDropDownButton4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReservedToolStripMenuItem})
+        Me.ToolStripDropDownButton4.ForeColor = System.Drawing.Color.Black
+        Me.ToolStripDropDownButton4.Image = CType(resources.GetObject("ToolStripDropDownButton4.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton4.Name = "ToolStripDropDownButton4"
+        Me.ToolStripDropDownButton4.Size = New System.Drawing.Size(67, 22)
+        Me.ToolStripDropDownButton4.Text = "Reserved"
+        '
+        'ReservedToolStripMenuItem
+        '
+        Me.ReservedToolStripMenuItem.Name = "ReservedToolStripMenuItem"
+        Me.ReservedToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ReservedToolStripMenuItem.Text = "Reserved"
         '
         'Form1
         '
@@ -188,4 +240,10 @@ Partial Class Form1
     Friend WithEvents CheckForUpdateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateAllBinariesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateSoftwareListToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripDropDownButton3 As ToolStripDropDownButton
+    Friend WithEvents USBToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WirelessToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PairToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripDropDownButton4 As ToolStripDropDownButton
+    Friend WithEvents ReservedToolStripMenuItem As ToolStripMenuItem
 End Class
