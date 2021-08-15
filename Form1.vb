@@ -2,6 +2,22 @@
 
 Public Class Form1
 
+#Region "Global string vars"
+    ' Takes a bit more memory, but I prefer to have string tables.
+
+    Public Const ServerURL As String = "https://splitsecond.site"
+    Public Const DonationURL As String = "https://paypal.me/SapphireExOne?locale.x=en_US"
+
+    Public Const Error_FormLoadBad = "Error, something has prevented the program from starting correctly. Aborting."
+    Public Const Error_MasterServerUnavailable = "Master server is unavailable after multiple attempts, disabling server usage."
+    Public Const Info_ProgName = "Sapphire S21 Toolbox"
+    Public Const Info_ServerOnline = "Server status: Online"
+    Public Const Info_ServerOnlineMessage = "Server is online."
+    Public Const Info_ServerOffline = "Server status: Offline"
+    Public Const Info_ServerOfflineMessage = "Server is offline."
+#End Region
+
+    ' Global variables
     Public ServerStatus As String = "Server status: Indeterminate"
     Public Shared ServerRetryCount As Integer = 0
     Public Shared CanUseServer As Boolean = True
@@ -18,13 +34,13 @@ Public Class Form1
     Private Shared Function GetServerStatus(ByVal URL As String) As Boolean
         If (CanUseServer) Then
             If (ServerRetryCount > +10) Then
-                MsgBox("Master server is unavailable after multiple attempts, disabling server usage.")
+                MsgBox(Error_MasterServerUnavailable)
                 CanUseServer = False
             End If
             Try
                 Dim req As WebRequest = WebRequest.Create(URL)
                 req.Timeout = 300
-                req.Headers.Add(HttpRequestHeader.UserAgent, "Sapphire S21 Toolbox")
+                req.Headers.Add(HttpRequestHeader.UserAgent, Info_ProgName)
                 Dim res As WebResponse = req.GetResponse()
             Catch ex As Exception
                 System.Diagnostics.Debug.WriteLine(ex.Message)
@@ -49,7 +65,7 @@ Public Class Form1
         While (Me.Visible = False)
             Threading.Thread.Sleep(1)
             If (WaitingForVisibleCount >= MaximumWaitTime) Then
-                MsgBox("Error, something has prevented the program from starting correctly. Aborting.", MsgBoxStyle.Critical)
+                MsgBox(Error_FormLoadBad, MsgBoxStyle.Critical)
                 Application.Exit()
             End If
             WaitingForVisibleCount += 1
@@ -64,10 +80,10 @@ Public Class Form1
     End Sub
 
     Private Sub GenericWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles GenericWorker.DoWork
-        If (GetServerStatus("https://splitsecond.site")) Then
-            ServerStatus = "Server status: Online"
+        If (GetServerStatus(ServerURL)) Then
+            ServerStatus = Info_ServerOnline
         Else
-            ServerStatus = "Server status: Offline"
+            ServerStatus = Info_ServerOffline
         End If
     End Sub
 
@@ -96,18 +112,18 @@ Public Class Form1
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1,
-                0, '0 is default otherwise use MessageBoxOptions Enum
-                "https://paypal.me/SapphireExOne?locale.x=en_US",
+                0,
+                DonationURL,
                 "S21Toolbox")
         End Try
 
     End Sub
 
     Private Sub CheckServerStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CheckServerStatusToolStripMenuItem.Click
-        If (GetServerStatus("https://splitsecond.site")) Then
-            MsgBox("Server is online.")
+        If (GetServerStatus(ServerURL)) Then
+            MsgBox(Info_ServerOnlineMessage)
         Else
-            MsgBox("Server is offline.")
+            MsgBox(Info_ServerOfflineMessage)
         End If
     End Sub
 End Class
